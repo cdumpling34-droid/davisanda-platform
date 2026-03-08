@@ -2,132 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Davis and Associates</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Davis & Associates | Cybersecurity & Technology Advisory</title>
 
 <style>
 
 body{
 margin:0;
-font-family: "Helvetica Neue", Arial, sans-serif;
-background:#0b0f19;
-color:white;
-line-height:1.6;
+font-family: Georgia, "Times New Roman", serif;
+background:#0B0F19;
+color:#F5F5F5;
 }
 
 header{
+padding:80px 20px;
+text-align:center;
+background:linear-gradient(180deg,#0B0F19,#111827);
+}
+
+h1{
+font-size:48px;
+letter-spacing:1px;
+}
+
+.tagline{
+color:#C9A961;
+font-size:20px;
+margin-top:10px;
+}
+
+button{
+padding:14px 28px;
+margin:15px;
+border:none;
+background:#C9A961;
+color:#0B0F19;
+font-weight:bold;
+cursor:pointer;
+}
+
+section{
+padding:70px 15%;
+text-align:center;
+}
+
+.services{
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:30px 60px;
-border-bottom:1px solid #1f2937;
-}
-
-.logo{
-font-size:22px;
-font-weight:600;
-letter-spacing:1px;
-}
-
-nav a{
-color:#9ca3af;
-margin-left:30px;
-text-decoration:none;
-font-size:14px;
-}
-
-nav a:hover{
-color:white;
-}
-
-.hero{
-height:85vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:0 20px;
-}
-
-.hero h1{
-font-size:68px;
-font-weight:600;
-letter-spacing:1px;
-margin-bottom:10px;
-}
-
-.hero h2{
-font-size:28px;
-color:#3b82f6;
-margin-bottom:20px;
-}
-
-.hero p{
-max-width:700px;
-color:#9ca3af;
-font-size:18px;
-}
-
-.cta{
-margin-top:40px;
-}
-
-.cta a{
-background:#3b82f6;
-color:white;
-padding:16px 36px;
-text-decoration:none;
-border-radius:6px;
-font-weight:500;
-}
-
-.section{
-padding:100px 60px;
-max-width:1200px;
-margin:auto;
-}
-
-.section h2{
-font-size:38px;
-margin-bottom:40px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+flex-wrap:wrap;
 gap:40px;
 }
 
-.card{
-background:#111827;
-padding:30px;
-border-radius:8px;
-border:1px solid #1f2937;
-}
-
-.card h3{
-margin-bottom:12px;
-}
-
-.card p{
-color:#9ca3af;
-}
-
-.statement{
-font-size:22px;
-max-width:900px;
-margin:auto;
-color:#d1d5db;
-text-align:center;
+.service{
+flex:1;
+min-width:250px;
 }
 
 footer{
-padding:50px;
 text-align:center;
-border-top:1px solid #1f2937;
-color:#6b7280;
+padding:40px;
+color:#9CA3AF;
 }
 
 </style>
@@ -136,131 +70,64 @@ color:#6b7280;
 <body>
 
 <header>
+<h1>Davis and Associates</h1>
+<p class="tagline">Strategic Intelligence for the Modern Economy</p>
 
-<div class="logo">DAVIS & ASSOCIATES</div>
-
-<nav>
-<a href="#">Advisory</a>
-<a href="#">Research</a>
-<a href="#">Technology</a>
-<a href="#">Contact</a>
-</nav>
+<button>Schedule Consultation</button>
+<button>View Capabilities</button>
 
 </header>
 
-<section class="hero">
+<section>
 
-<h1>Davis & Associates</h1>
-
-<h2>Cybersecurity & Strategic Technology Advisory</h2>
+<h2>About the Firm</h2>
 
 <p>
-Davis & Associates advises organizations on cybersecurity strategy,
-emerging technologies, and digital risk. Our work focuses on
-protecting critical infrastructure, evaluating technological change,
-and guiding organizations through complex digital environments.
+Davis and Associates operates at the intersection of cybersecurity, blockchain strategy, and digital enterprise transformation. 
+We partner with founders, enterprises, and institutions to build secure, scalable, and future-ready organizations.
 </p>
-
-<div class="cta">
-<a href="#">Request Consultation</a>
-</div>
 
 </section>
 
-<section class="section">
+<section>
 
-<h2>Advisory Divisions</h2>
+<h2>Core Capabilities</h2>
 
-<div class="grid">
+<div class="services">
 
-<div class="card">
+<div class="service">
 <h3>Cybersecurity Strategy</h3>
-<p>
-Enterprise risk assessment, security architecture design,
-and digital infrastructure protection.
-</p>
+<p>Enterprise security architecture, risk analysis, and compliance planning.</p>
 </div>
 
-<div class="card">
-<h3>Digital Forensics</h3>
-<p>
-Investigation of cyber incidents, compromised systems,
-and digital evidence analysis.
-</p>
+<div class="service">
+<h3>Blockchain & Web3 Consulting</h3>
+<p>Digital asset security, token economics, and decentralized infrastructure.</p>
 </div>
 
-<div class="card">
-<h3>Blockchain Intelligence</h3>
-<p>
-Security analysis of token ecosystems,
-smart contracts, and Web3 platforms.
-</p>
-</div>
-
-<div class="card">
+<div class="service">
 <h3>Technology Advisory</h3>
-<p>
-Strategic guidance on emerging technologies,
-digital markets, and innovation risk.
-</p>
+<p>Strategic technology deployment and digital business transformation.</p>
 </div>
 
 </div>
 
 </section>
 
-<section class="section">
+<section>
 
-<h2>Technology Initiatives</h2>
+<h2>Our Philosophy</h2>
 
-<div class="grid">
-
-<div class="card">
-<h3>Bad Meme Coin Finder</h3>
 <p>
-Research initiative focused on identifying
-high-risk cryptocurrency tokens and fraud patterns.
-</p>
-</div>
-
-<div class="card">
-<h3>IoT Security Research</h3>
-<p>
-Development of investigative frameworks
-for connected devices and smart infrastructure.
-</p>
-</div>
-
-<div class="card">
-<h3>Web3 Monitoring</h3>
-<p>
-Ongoing analysis of decentralized finance platforms
-and smart contract vulnerabilities.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<p class="statement">
-
-Davis & Associates operates at the intersection of
-cybersecurity, emerging technology, and strategic advisory.
-Our mission is to help organizations protect digital assets,
-understand technological change, and build resilient systems
-for the future.
-
+Technology should create leverage, security, and opportunity. 
+Our mission is to equip organizations with the strategy and infrastructure required to operate in an increasingly digital economy.
 </p>
 
 </section>
 
 <footer>
 
-<p>© 2026 Davis & Associates</p>
-<p>Cybersecurity • Technology Advisory • Digital Risk</p>
+© 2026 Davis and Associates — Strategic Consulting
 
 </footer>
 
