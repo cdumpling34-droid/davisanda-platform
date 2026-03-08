@@ -1,22 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Davis & Associates | Strategic Consulting</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Georgia, "Times New Roman", serif;
+background:#0b1626;
+color:white;
+}
+
+/* NAVBAR */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#08111f;
+border-bottom:1px solid #d4af37;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:24px;
+color:#d4af37;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+nav a{
+color:white;
+margin-left:30px;
+text-decoration:none;
+font-size:16px;
+}
+
+nav a:hover{
+color:#d4af37;
+}
+
+/* HERO SECTION */
+
+.hero{
+height:90vh;
+background:
+linear-gradient(rgba(10,20,40,.85), rgba(10,20,40,.9)),
+url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+}
+
+.hero-content{
+max-width:800px;
+}
+
+.hero h1{
+font-size:64px;
+color:#d4af37;
+margin-bottom:20px;
+letter-spacing:2px;
+}
+
+.hero p{
+font-size:20px;
+line-height:1.6;
+color:#d9d9d9;
+margin-bottom:40px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.btn-primary{
+background:#d4af37;
+color:#0b1626;
+padding:14px 30px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.btn-secondary{
+border:2px solid #d4af37;
+color:#d4af37;
+padding:14px 30px;
+text-decoration:none;
+}
+
+.btn-primary:hover{
+background:#f1c95a;
+}
+
+.btn-secondary:hover{
+background:#d4af37;
+color:#0b1626;
+}
+
+/* SERVICES */
+
+.services{
+padding:80px 60px;
+background:#0e1b31;
+text-align:center;
+}
+
+.services h2{
+color:#d4af37;
+font-size:36px;
+margin-bottom:50px;
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+max-width:1200px;
+margin:auto;
+}
+
+.service-card{
+background:#111f38;
+padding:40px;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.service-card h3{
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.service-card p{
+color:#cfcfcf;
+line-height:1.6;
+}
+
+/* ABOUT */
+
+.about{
+padding:80px 60px;
+max-width:1000px;
+margin:auto;
+text-align:center;
+}
+
+.about h2{
+color:#d4af37;
+font-size:36px;
+margin-bottom:30px;
+}
+
+.about p{
+line-height:1.7;
+color:#cfcfcf;
+font-size:18px;
+}
+
+/* CONTACT */
+
+.contact{
+padding:80px 60px;
+background:#0e1b31;
+text-align:center;
+}
+
+.contact h2{
+color:#d4af37;
+margin-bottom:30px;
+font-size:36px;
+}
+
+.contact a{
+display:inline-block;
+margin-top:20px;
+background:#d4af37;
+color:#08111f;
+padding:15px 35px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+background:#08111f;
+padding:30px;
+text-align:center;
+color:#aaa;
+font-size:14px;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Davis & Associates</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
 <section class="hero">
-  <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <h1>Davis & Associates</h1>
+<div class="hero-content">
 
-    <p class="tagline">
-      Strategic Business & Technology Consulting
-    </p>
+<h1>Davis & Associates</h1>
 
-    <p class="hero-sub">
-      We help organizations scale, secure their infrastructure,
-      and build high-value digital assets through elite strategy,
-      cybersecurity expertise, and advanced technology development.
-    </p>
+<p>
+Strategic Business & Technology Consulting delivering high-level
+cybersecurity, digital infrastructure, and growth strategy
+for modern organizations.
+</p>
 
-    <div class="hero-buttons">
-      <a href="#services" class="btn-primary">Our Services</a>
-      <a href="#contact" class="btn-secondary">Schedule Consultation</a>
-    </div>
-  </div>
+<div class="buttons">
+
+<a href="#services" class="btn-primary">Our Services</a>
+
+<a href="#contact" class="btn-secondary">Schedule Consultation</a>
+
+</div>
+
+</div>
+
 </section>
+
+<section id="services" class="services">
+
+<h2>Consulting Services</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+<h3>Cybersecurity Advisory</h3>
+<p>
+Strategic security assessments, risk mitigation frameworks,
+and infrastructure protection for organizations facing
+modern digital threats.
+</p>
+</div>
+
+<div class="service-card">
+<h3>Business Strategy</h3>
+<p>
+Executive-level consulting focused on scaling companies,
+improving operational efficiency, and identifying
+new revenue opportunities.
+</p>
+</div>
+
+<div class="service-card">
+<h3>Technology Development</h3>
+<p>
+Custom software and emerging technology development
+including AI, blockchain systems, and secure digital platforms.
+</p>
+</div>
+
+<div class="service-card">
+<h3>Digital Infrastructure</h3>
+<p>
+Network architecture, cloud transformation, and enterprise
+technology solutions designed for resilience and growth.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="about" class="about">
+
+<h2>About Davis & Associates</h2>
+
+<p>
+Davis & Associates is a strategic consulting firm focused on
+business growth, cybersecurity excellence, and advanced
+technology integration. Our mission is to help organizations
+navigate complex digital landscapes while building
+secure and scalable systems that support long-term success.
+</p>
+
+</section>
+
+<section id="contact" class="contact">
+
+<h2>Start a Conversation</h2>
+
+<p>
+Schedule a consultation to discuss how Davis & Associates
+can support your organization's strategic objectives.
+</p>
+
+<a href="mailto:magmacartowner@outlook.com">Contact Our Firm</a>
+
+</section>
+
+<footer>
+
+© 2026 Davis & Associates — Strategic Consulting
+
+</footer>
+
+</body>
+
+</html>
