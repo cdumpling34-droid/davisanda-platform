@@ -1,60 +1,3 @@
-<script>
-
-const canvas = document.createElement("canvas");
-document.body.appendChild(canvas);
-
-canvas.style.position="fixed";
-canvas.style.top="0";
-canvas.style.left="0";
-canvas.style.zIndex="-1";
-
-const ctx = canvas.getContext("2d");
-
-function resize(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-}
-
-window.addEventListener("resize",resize);
-resize();
-
-let particles=[];
-
-for(let i=0;i<60;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5
-});
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-
-p.x+=p.vx;
-p.y+=p.vy;
-
-if(p.x<0||p.x>canvas.width)p.vx*=-1;
-if(p.y<0||p.y>canvas.height)p.vy*=-1;
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,2,0,Math.PI*2);
-ctx.fillStyle="#3b82f6";
-ctx.fill();
-
-});
-
-requestAnimationFrame(animate);
-
-}
-
-animate();
-
-</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,10 +96,6 @@ border-radius:10px;
 border:1px solid #1e293b;
 }
 
-.card h3{
-margin-bottom:10px;
-}
-
 footer{
 padding:40px;
 text-align:center;
@@ -209,17 +148,17 @@ digital forensics, blockchain security analysis, and technology risk intelligenc
 
 <div class="card">
 <h3>Digital Forensics</h3>
-<p>Investigation of cyber incidents, compromised systems, and digital evidence collection.</p>
+<p>Investigation of cyber incidents and digital evidence collection.</p>
 </div>
 
 <div class="card">
 <h3>Blockchain Security</h3>
-<p>Security analysis of Web3 platforms, token ecosystems, and smart contract risks.</p>
+<p>Security analysis of Web3 platforms and smart contract risks.</p>
 </div>
 
 <div class="card">
 <h3>Community Cyber Protection</h3>
-<p>Education and security initiatives designed to protect individuals and seniors.</p>
+<p>Programs designed to protect individuals and seniors from fraud.</p>
 </div>
 
 </div>
@@ -233,18 +172,38 @@ digital forensics, blockchain security analysis, and technology risk intelligenc
 <div class="grid">
 
 <div class="card">
-<h3>Bad Meme Coin Finder</h3>
-<p>AI-driven analysis detecting high-risk tokens and potential rug pulls.</p>
-</div>
-
-<div class="card">
 <h3>IoT Security Research</h3>
-<p>Development of cross-device forensic tools for connected device investigations.</p>
+<p>Development of cross-device forensic tools.</p>
 </div>
 
 <div class="card">
 <h3>Web3 Security Monitoring</h3>
-<p>Continuous monitoring of smart contracts and decentralized applications.</p>
+<p>Monitoring decentralized applications and smart contracts.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Cyber Intelligence Reports</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Blockchain Fraud Trends</h3>
+<p>Analysis of emerging cryptocurrency scams.</p>
+</div>
+
+<div class="card">
+<h3>IoT Security Risks</h3>
+<p>Research on vulnerabilities in connected devices.</p>
+</div>
+
+<div class="card">
+<h3>Web3 Exploit Monitoring</h3>
+<p>Monitoring smart contract vulnerabilities.</p>
 </div>
 
 </div>
@@ -257,51 +216,60 @@ digital forensics, blockchain security analysis, and technology risk intelligenc
 
 </footer>
 
+<script>
+
+const canvas=document.createElement("canvas");
+document.body.appendChild(canvas);
+
+canvas.style.position="fixed";
+canvas.style.top="0";
+canvas.style.left="0";
+canvas.style.zIndex="-1";
+
+const ctx=canvas.getContext("2d");
+
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+
+window.addEventListener("resize",resize);
+resize();
+
+let particles=[];
+
+for(let i=0;i<60;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fillStyle="#3b82f6";
+ctx.fill();
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
 </body>
 </html>
-<li>Business Innovation Consulting</li>
-</ul>
-
-</section>
-
-</body>
-</html>
-<section class="section">
-
-<h2>Cyber Intelligence Reports</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Blockchain Fraud Trends</h3>
-
-<p>
-Analysis of emerging cryptocurrency scams and token manipulation schemes.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>IoT Security Risks</h3>
-
-<p>
-Research on vulnerabilities in connected devices and smart home ecosystems.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Web3 Exploit Monitoring</h3>
-
-<p>
-Ongoing monitoring of smart contract exploits and DeFi vulnerabilities.
-</p>
-
-</div>
-
-</div>
-
-</section>
