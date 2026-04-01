@@ -3,326 +3,885 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Davis & Associates | Strategic Consulting</title>
-
+<title>C.D. Davis & Associates | Cybersecurity & Technology Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --black: #080808;
+    --dark: #0f0f0f;
+    --card: #131313;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.18);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-bright: #e8c96a;
+    --white: #f0ede8;
+    --muted: rgba(240,237,232,0.45);
+    --faint: rgba(240,237,232,0.15);
+  }
 
-body{
-margin:0;
-font-family:Georgia, "Times New Roman", serif;
-background:#0b1626;
-color:white;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-/* NAVBAR */
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:#08111f;
-border-bottom:1px solid #d4af37;
-position:sticky;
-top:0;
-}
+  .cursor {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.18s ease;
+    transform: translate(-50%, -50%);
+  }
 
-.logo{
-font-size:24px;
-color:#d4af37;
-font-weight:bold;
-letter-spacing:1px;
-}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
 
-nav a{
-color:white;
-margin-left:30px;
-text-decoration:none;
-font-size:16px;
-}
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+  }
 
-nav a:hover{
-color:#d4af37;
-}
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
 
-/* HERO SECTION */
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
 
-.hero{
-height:90vh;
-background:
-linear-gradient(rgba(10,20,40,.85), rgba(10,20,40,.9)),
-url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab");
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px;
-}
+  .nav-cta {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-dim); border-color: var(--gold); }
 
-.hero-content{
-max-width:800px;
-}
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
 
-.hero h1{
-font-size:64px;
-color:#d4af37;
-margin-bottom:20px;
-letter-spacing:2px;
-}
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 70%);
+  }
 
-.hero p{
-font-size:20px;
-line-height:1.6;
-color:#d9d9d9;
-margin-bottom:40px;
-}
+  .hero-accent {
+    position: absolute;
+    top: 15%; right: 8%;
+    width: 320px; height: 320px;
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 50%;
+    animation: pulse 8s ease-in-out infinite;
+  }
+  .hero-accent::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,168,76,0.05);
+    border-radius: 50%;
+    animation: pulse 8s ease-in-out infinite 1s;
+  }
+  .hero-accent::after {
+    content: '';
+    position: absolute;
+    inset: 50px;
+    border: 1px solid rgba(201,168,76,0.03);
+    border-radius: 50%;
+    animation: pulse 8s ease-in-out infinite 2s;
+  }
 
-.buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-}
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.04); opacity: 0.6; }
+  }
 
-.btn-primary{
-background:#d4af37;
-color:#0b1626;
-padding:14px 30px;
-text-decoration:none;
-font-weight:bold;
-}
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
 
-.btn-secondary{
-border:2px solid #d4af37;
-color:#d4af37;
-padding:14px 30px;
-text-decoration:none;
-}
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
 
-.btn-primary:hover{
-background:#f1c95a;
-}
+  .hero-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 3rem;
+  }
 
-.btn-secondary:hover{
-background:#d4af37;
-color:#0b1626;
-}
+  .hero-actions { display: flex; gap: 1.5rem; align-items: center; }
 
-/* SERVICES */
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 1rem 2.4rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-bright); }
 
-.services{
-padding:80px 60px;
-background:#0e1b31;
-text-align:center;
-}
+  .btn-ghost {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: color 0.2s;
+  }
+  .btn-ghost::after { content: '→'; }
+  .btn-ghost:hover { color: var(--white); }
 
-.services h2{
-color:#d4af37;
-font-size:36px;
-margin-bottom:50px;
-}
+  .hero-stats {
+    position: absolute;
+    right: 3rem; bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: right;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-top: 0.3rem;
+  }
 
-.service-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-max-width:1200px;
-margin:auto;
-}
+  section { padding: 6rem 3rem; }
 
-.service-card{
-background:#111f38;
-padding:40px;
-border:1px solid rgba(255,255,255,.05);
-}
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px; height: 1px;
+    background: var(--gold);
+  }
 
-.service-card h3{
-color:#d4af37;
-margin-bottom:15px;
-}
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
 
-.service-card p{
-color:#cfcfcf;
-line-height:1.6;
-}
+  #services { background: var(--dark); border-top: 1px solid var(--border); }
 
-/* ABOUT */
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: end;
+  }
 
-.about{
-padding:80px 60px;
-max-width:1000px;
-margin:auto;
-text-align:center;
-}
+  .services-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+  }
 
-.about h2{
-color:#d4af37;
-font-size:36px;
-margin-bottom:30px;
-}
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
 
-.about p{
-line-height:1.7;
-color:#cfcfcf;
-font-size:18px;
-}
+  .service-card {
+    background: var(--dark);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .service-card:hover { background: var(--card); }
+  .service-card:hover::after { width: 100%; }
 
-/* CONTACT */
+  .service-num {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .service-desc {
+    font-size: 0.68rem;
+    color: var(--muted);
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+  }
 
-.contact{
-padding:80px 60px;
-background:#0e1b31;
-text-align:center;
-}
+  #about { border-top: 1px solid var(--border); }
 
-.contact h2{
-color:#d4af37;
-margin-bottom:30px;
-font-size:36px;
-}
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: start;
+  }
 
-.contact a{
-display:inline-block;
-margin-top:20px;
-background:#d4af37;
-color:#08111f;
-padding:15px 35px;
-text-decoration:none;
-font-weight:bold;
-}
+  .about-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+  }
 
-/* FOOTER */
+  .credential {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .credential:last-child { border-bottom: none; }
+  .credential:hover { background: var(--card); }
 
-footer{
-background:#08111f;
-padding:30px;
-text-align:center;
-color:#aaa;
-font-size:14px;
-border-top:1px solid rgba(255,255,255,.05);
-}
+  .cred-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .cred-text {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .cred-text strong {
+    display: block;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
 
+  .about-body {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+  .about-body p { margin-bottom: 1.5rem; }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-quote {
+    margin-top: 2.5rem;
+    padding: 1.8rem;
+    border-left: 2px solid var(--gold);
+    background: var(--card);
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .quote-attr {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  #booking { background: var(--dark); border-top: 1px solid var(--border); }
+
+  .booking-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .rate-display {
+    margin: 2rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .rate-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .rate-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .booking-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .booking-includes li {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .booking-includes li::before {
+    content: '';
+    display: block;
+    width: 16px; height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .booking-form {
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    background: var(--black);
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--white);
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-field { margin-bottom: 1.2rem; }
+
+  .form-field label {
+    display: block;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    background: var(--dark);
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 300;
+    padding: 0.8rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: rgba(201,168,76,0.5); }
+  .form-field select option { background: var(--dark); }
+  .form-field textarea { resize: vertical; min-height: 90px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-bright); }
+
+  .form-note {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    color: var(--faint);
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .success-msg { display: none; text-align: center; padding: 2rem; }
+  .success-msg .check {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .success-msg p {
+    font-size: 0.7rem;
+    color: var(--muted);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+
+  .footer-right {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    text-align: right;
+    line-height: 2;
+  }
+  .footer-right a { color: var(--gold); text-decoration: none; }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-stats { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .booking-wrap { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .footer-right { text-align: left; }
+  }
 </style>
 </head>
-
 <body>
 
-<header>
-
-<div class="logo">Davis & Associates</div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
+  <a href="#" class="nav-logo">C.D. Davis <span>&</span> Associates</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book a consultation</a>
 </nav>
 
-</header>
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>Davis & Associates</h1>
-
-<p>
-Strategic Business & Technology Consulting delivering high-level
-cybersecurity, digital infrastructure, and growth strategy
-for modern organizations.
-</p>
-
-<div class="buttons">
-
-<a href="#services" class="btn-primary">Our Services</a>
-
-<a href="#contact" class="btn-secondary">Schedule Consultation</a>
-
-</div>
-
-</div>
-
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-eyebrow">Strategic Cybersecurity & Technology Consulting</div>
+  <h1 class="hero-title">Securing what<br>matters. <em>Building</em><br>what's next.</h1>
+  <p class="hero-sub">C.D. Davis & Associates delivers enterprise-grade cybersecurity intelligence, digital forensics, and emerging technology consulting to organizations that can't afford to be wrong.</p>
+  <div class="hero-actions">
+    <a href="#booking" class="btn-primary">Book at $99 / hr</a>
+    <a href="#services" class="btn-ghost">Explore services</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">MBA</div><div class="stat-label">Cybersecurity Mgmt</div></div>
+    <div><div class="stat-num">B.S.</div><div class="stat-label">Network Engineering</div></div>
+    <div><div class="stat-num">99</div><div class="stat-label">Dollars per hour</div></div>
+  </div>
 </section>
 
-<section id="services" class="services">
-
-<h2>Consulting Services</h2>
-
-<div class="service-grid">
-
-<div class="service-card">
-<h3>Cybersecurity Advisory</h3>
-<p>
-Strategic security assessments, risk mitigation frameworks,
-and infrastructure protection for organizations facing
-modern digital threats.
-</p>
-</div>
-
-<div class="service-card">
-<h3>Business Strategy</h3>
-<p>
-Executive-level consulting focused on scaling companies,
-improving operational efficiency, and identifying
-new revenue opportunities.
-</p>
-</div>
-
-<div class="service-card">
-<h3>Technology Development</h3>
-<p>
-Custom software and emerging technology development
-including AI, blockchain systems, and secure digital platforms.
-</p>
-</div>
-
-<div class="service-card">
-<h3>Digital Infrastructure</h3>
-<p>
-Network architecture, cloud transformation, and enterprise
-technology solutions designed for resilience and growth.
-</p>
-</div>
-
-</div>
-
+<section id="services">
+  <div class="services-header fade-up">
+    <div>
+      <div class="section-label">What we do</div>
+      <h2 class="section-title">Consulting<br>built for the<br>modern threat.</h2>
+    </div>
+    <p class="services-desc">Every engagement is led by a credentialed principal — not delegated to junior analysts. We bring network engineering depth, cybersecurity management expertise, and emerging technology fluency to every client relationship.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <div class="service-name">Cybersecurity Advisory</div>
+      <p class="service-desc">Strategic security assessments, risk frameworks, threat modeling, and incident response planning. We identify your exposure before adversaries do.</p>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.1s">
+      <div class="service-num">02</div>
+      <div class="service-name">Digital Forensics</div>
+      <p class="service-desc">Evidence collection, chain-of-custody analysis, breach investigation, and litigation support. When something goes wrong, we find out exactly what happened.</p>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.2s">
+      <div class="service-num">03</div>
+      <div class="service-name">AI & Emerging Tech</div>
+      <p class="service-desc">Security architecture for AI systems, blockchain applications, IoT environments, and next-generation platforms. We secure what others are still figuring out.</p>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.3s">
+      <div class="service-num">04</div>
+      <div class="service-name">Network Engineering</div>
+      <p class="service-desc">Infrastructure architecture, cloud transformation, zero-trust implementation, and enterprise network design built for resilience and scale.</p>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.4s">
+      <div class="service-num">05</div>
+      <div class="service-name">Fraud Detection</div>
+      <p class="service-desc">Financial fraud analysis, identity theft investigation, and transaction monitoring frameworks. We follow the money — and stop it from disappearing.</p>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.5s">
+      <div class="service-num">06</div>
+      <div class="service-name">Strategic Technology</div>
+      <p class="service-desc">Executive-level technology roadmapping, vendor evaluation, and digital transformation strategy. The right technology decisions, made with confidence.</p>
+    </div>
+  </div>
 </section>
 
-<section id="about" class="about">
-
-<h2>About Davis & Associates</h2>
-
-<p>
-Davis & Associates is a strategic consulting firm focused on
-business growth, cybersecurity excellence, and advanced
-technology integration. Our mission is to help organizations
-navigate complex digital landscapes while building
-secure and scalable systems that support long-term success.
-</p>
-
+<section id="about">
+  <div class="about-grid">
+    <div class="fade-up">
+      <div class="section-label">The principal</div>
+      <h2 class="section-title">Calvin D. Davis</h2>
+      <div class="about-credentials">
+        <div class="credential">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>MBA — Cybersecurity Management</strong>Oregon State University</div>
+        </div>
+        <div class="credential">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>B.S. — Network Engineering</strong>Bachelor of Science</div>
+        </div>
+        <div class="credential">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>A.A. — Business Administration</strong>Associate of Arts</div>
+        </div>
+        <div class="credential">
+          <div class="cred-dot"></div>
+          <div class="cred-text"><strong>Founder — C.D. Davis & Associates LLC</strong>Washington State LLC</div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <div class="about-body">
+        <p>C.D. Davis & Associates was built on a simple conviction: organizations deserve cybersecurity and technology counsel from someone who has lived inside the infrastructure — not just consulted around it. With a foundation in network engineering and graduate-level cybersecurity management, every engagement is grounded in technical depth that generalist consultants simply can't match.</p>
+        <p>The firm operates across cybersecurity intelligence, digital forensics, fraud detection, and emerging technology security — with an expanding portfolio of proprietary technology platforms in development. Clients range from regional small businesses protecting sensitive customer data to organizations navigating complex incident response and litigation support.</p>
+        <p>Every engagement is led personally. You work directly with the principal, not a rotation of analysts. That's not a differentiator — it's a requirement.</p>
+      </div>
+      <div class="about-quote">
+        <div class="quote-text">"The organizations that get hurt are the ones that waited until after the breach to call."</div>
+        <div class="quote-attr">— Calvin D. Davis, Principal</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact" class="contact">
-
-<h2>Start a Conversation</h2>
-
-<p>
-Schedule a consultation to discuss how Davis & Associates
-can support your organization's strategic objectives.
-</p>
-
-<a href="mailto:magmacartowner@outlook.com">Contact Our Firm</a>
-
+<section id="booking">
+  <div class="booking-wrap">
+    <div class="fade-up">
+      <div class="section-label">Engage the firm</div>
+      <h2 class="section-title">One rate.<br>No surprises.</h2>
+      <div class="rate-display">
+        <div class="rate-num">$99</div>
+        <div class="rate-label">per hour<br>all engagements</div>
+      </div>
+      <ul class="booking-includes">
+        <li>Direct access to the principal — Calvin D. Davis</li>
+        <li>Initial scope assessment included at no charge</li>
+        <li>Cybersecurity, forensics, network, AI, and fraud</li>
+        <li>Remote and on-site engagements available</li>
+        <li>Pacific Northwest and national clients welcome</li>
+        <li>Flexible hourly, retainer, and project arrangements</li>
+      </ul>
+      <p style="font-size:0.68rem; color:var(--muted); line-height:1.8; letter-spacing:0.04em;">Submit the consultation request and you'll receive a confirmation within 24 hours. Initial calls are scheduled for 30 minutes at no cost — so we can both determine if there's a fit before any commitment is made.</p>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <div class="booking-form" id="bookingForm">
+        <div class="form-title">Request a Consultation</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>First name</label>
+            <input type="text" id="fname" placeholder="First">
+          </div>
+          <div class="form-field">
+            <label>Last name</label>
+            <input type="text" id="lname" placeholder="Last">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Email address</label>
+          <input type="email" id="email" placeholder="you@company.com">
+        </div>
+        <div class="form-field">
+          <label>Organization</label>
+          <input type="text" id="org" placeholder="Company or individual">
+        </div>
+        <div class="form-field">
+          <label>Service area</label>
+          <select id="service">
+            <option value="" disabled selected>Select a focus area</option>
+            <option>Cybersecurity Advisory</option>
+            <option>Digital Forensics</option>
+            <option>AI & Emerging Technology</option>
+            <option>Network Engineering</option>
+            <option>Fraud Detection</option>
+            <option>Strategic Technology Consulting</option>
+            <option>Not sure — general inquiry</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Brief description</label>
+          <textarea id="desc" placeholder="Describe your situation or what you're trying to solve..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Request Consultation — $99 / hr</button>
+        <div class="form-note">You will not be charged until an engagement is confirmed.</div>
+      </div>
+      <div class="success-msg" id="successMsg">
+        <div class="check">✦</div>
+        <p>Your consultation request has been received.<br><br>Calvin D. Davis will follow up within 24 hours to confirm availability and schedule your initial 30-minute call.<br><br><span style="color:var(--gold);">C.D. Davis & Associates</span></p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-
-© 2026 Davis & Associates — Strategic Consulting
-
+  <div>
+    <div class="footer-logo">C.D. Davis <span>&</span> Associates</div>
+    <div class="footer-sub">Cybersecurity & Technology Consulting · Portland, Oregon</div>
+  </div>
+  <div class="footer-right">
+    <div>© 2026 C.D. Davis & Associates LLC</div>
+    <div>Washington State LLC · All rights reserved</div>
+    <div><a href="mailto:magmacartowner@outlook.com">magmacartowner@outlook.com</a></div>
+  </div>
 </footer>
 
-</body>
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
 
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = (mx - 4) + 'px';
+    cursor.style.top = (my - 4) + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(2.5)';
+      ring.style.width = '48px';
+      ring.style.height = '48px';
+      ring.style.borderColor = 'rgba(201,168,76,0.7)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      ring.style.width = '32px';
+      ring.style.height = '32px';
+      ring.style.borderColor = 'rgba(201,168,76,0.4)';
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function submitForm() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+
+    if (!fname || !email || !service) {
+      alert('Please fill in your name, email, and service area.');
+      return;
+    }
+
+    const subject = encodeURIComponent('Consultation Request — C.D. Davis & Associates');
+    const body = encodeURIComponent(
+      'Name: ' + document.getElementById('fname').value + ' ' + document.getElementById('lname').value + '\n' +
+      'Email: ' + email + '\n' +
+      'Organization: ' + document.getElementById('org').value + '\n' +
+      'Service: ' + service + '\n\n' +
+      'Description:\n' + document.getElementById('desc').value
+    );
+
+    window.location.href = 'mailto:magmacartowner@outlook.com?subject=' + subject + '&body=' + body;
+
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
 </html>
