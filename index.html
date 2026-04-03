@@ -20,10 +20,8 @@
     --muted: rgba(240,237,232,0.45);
     --faint: rgba(240,237,232,0.15);
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--black);
     color: var(--white);
@@ -32,7 +30,6 @@
     overflow-x: hidden;
     cursor: none;
   }
-
   .cursor {
     position: fixed;
     width: 8px; height: 8px;
@@ -53,7 +50,6 @@
     transition: all 0.18s ease;
     transform: translate(-50%, -50%);
   }
-
   body::before {
     content: '';
     position: fixed;
@@ -63,7 +59,6 @@
     z-index: 1000;
     opacity: 0.4;
   }
-
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -76,7 +71,6 @@
     background: rgba(8,8,8,0.92);
     backdrop-filter: blur(12px);
   }
-
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
@@ -86,7 +80,6 @@
     text-decoration: none;
   }
   .nav-logo span { color: var(--gold); }
-
   .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -101,7 +94,6 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--gold); }
-
   .nav-cta {
     font-size: 0.65rem;
     letter-spacing: 0.15em;
@@ -113,7 +105,6 @@
     transition: all 0.2s;
   }
   .nav-cta:hover { background: var(--gold-dim); border-color: var(--gold); }
-
   .hero {
     min-height: 100vh;
     display: flex;
@@ -123,7 +114,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .hero-grid {
     position: absolute;
     inset: 0;
@@ -133,7 +123,6 @@
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 70%);
   }
-
   .hero-accent {
     position: absolute;
     top: 15%; right: 8%;
@@ -158,12 +147,10 @@
     border-radius: 50%;
     animation: pulse 8s ease-in-out infinite 2s;
   }
-
   @keyframes pulse {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.04); opacity: 0.6; }
   }
-
   .hero-eyebrow {
     font-size: 0.65rem;
     letter-spacing: 0.25em;
@@ -180,7 +167,6 @@
     width: 40px; height: 1px;
     background: var(--gold);
   }
-
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(3.5rem, 7vw, 6.5rem);
@@ -191,7 +177,6 @@
     max-width: 800px;
   }
   .hero-title em { font-style: italic; color: var(--gold); }
-
   .hero-sub {
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -200,9 +185,7 @@
     max-width: 480px;
     margin-bottom: 3rem;
   }
-
   .hero-actions { display: flex; gap: 1.5rem; align-items: center; }
-
   .btn-primary {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
@@ -216,7 +199,6 @@
     display: inline-block;
   }
   .btn-primary:hover { background: var(--gold-bright); }
-
   .btn-ghost {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
@@ -231,7 +213,6 @@
   }
   .btn-ghost::after { content: '→'; }
   .btn-ghost:hover { color: var(--white); }
-
   .hero-stats {
     position: absolute;
     right: 3rem; bottom: 5rem;
@@ -254,9 +235,7 @@
     color: var(--faint);
     margin-top: 0.3rem;
   }
-
   section { padding: 6rem 3rem; }
-
   .section-label {
     font-size: 0.6rem;
     letter-spacing: 0.3em;
@@ -273,7 +252,6 @@
     width: 30px; height: 1px;
     background: var(--gold);
   }
-
   .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 4vw, 3.5rem);
@@ -281,9 +259,7 @@
     line-height: 1.1;
     margin-bottom: 1.5rem;
   }
-
   #services { background: var(--dark); border-top: 1px solid var(--border); }
-
   .services-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -291,21 +267,18 @@
     margin-bottom: 4rem;
     align-items: end;
   }
-
   .services-desc {
     font-size: 0.72rem;
     color: var(--muted);
     line-height: 1.9;
     letter-spacing: 0.04em;
   }
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--border);
   }
-
   .service-card {
     background: var(--dark);
     padding: 2.5rem;
@@ -323,7 +296,6 @@
   }
   .service-card:hover { background: var(--card); }
   .service-card:hover::after { width: 100%; }
-
   .service-num {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
@@ -343,16 +315,13 @@
     line-height: 1.9;
     letter-spacing: 0.03em;
   }
-
   #about { border-top: 1px solid var(--border); }
-
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 6rem;
     align-items: start;
   }
-
   .about-credentials {
     display: flex;
     flex-direction: column;
@@ -360,7 +329,6 @@
     margin-top: 2rem;
     border: 1px solid var(--border);
   }
-
   .credential {
     padding: 1.2rem 1.5rem;
     border-bottom: 1px solid var(--border);
@@ -372,7 +340,6 @@
   }
   .credential:last-child { border-bottom: none; }
   .credential:hover { background: var(--card); }
-
   .cred-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
@@ -391,7 +358,6 @@
     font-weight: 400;
     margin-bottom: 0.2rem;
   }
-
   .about-body {
     font-size: 0.72rem;
     color: var(--muted);
@@ -400,7 +366,6 @@
   }
   .about-body p { margin-bottom: 1.5rem; }
   .about-body p:last-child { margin-bottom: 0; }
-
   .about-quote {
     margin-top: 2.5rem;
     padding: 1.8rem;
@@ -422,16 +387,13 @@
     text-transform: uppercase;
     color: var(--gold);
   }
-
   #booking { background: var(--dark); border-top: 1px solid var(--border); }
-
   .booking-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
     align-items: start;
   }
-
   .rate-display {
     margin: 2rem 0;
     display: flex;
@@ -451,7 +413,6 @@
     color: var(--muted);
     text-transform: uppercase;
   }
-
   .booking-includes {
     list-style: none;
     display: flex;
@@ -474,94 +435,47 @@
     background: var(--gold);
     flex-shrink: 0;
   }
-
-  .booking-form {
+  .booking-cta-box {
     border: 1px solid var(--border);
     padding: 2.5rem;
     background: var(--black);
+    text-align: center;
   }
-
-  .form-title {
+  .booking-cta-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
     font-weight: 300;
-    margin-bottom: 2rem;
+    margin-bottom: 0.75rem;
     color: var(--white);
   }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .form-field { margin-bottom: 1.2rem; }
-
-  .form-field label {
-    display: block;
-    font-size: 0.58rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+  .booking-cta-sub {
+    font-size: 0.68rem;
     color: var(--muted);
-    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
   }
-
-  .form-field input,
-  .form-field select,
-  .form-field textarea {
-    width: 100%;
-    background: var(--dark);
-    border: 1px solid var(--border);
-    color: var(--white);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 300;
-    padding: 0.8rem 1rem;
-    outline: none;
-    transition: border-color 0.2s;
-    appearance: none;
-  }
-  .form-field input:focus,
-  .form-field select:focus,
-  .form-field textarea:focus { border-color: rgba(201,168,76,0.5); }
-  .form-field select option { background: var(--dark); }
-  .form-field textarea { resize: vertical; min-height: 90px; }
-
-  .form-submit {
+  .booking-cta-btn {
+    display: inline-block;
     width: 100%;
     background: var(--gold);
     color: var(--black);
-    border: none;
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 1.1rem;
-    cursor: pointer;
+    padding: 1.1rem 2rem;
+    text-decoration: none;
     transition: background 0.2s;
-    margin-top: 0.5rem;
-  }
-  .form-submit:hover { background: var(--gold-bright); }
-
-  .form-note {
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    color: var(--faint);
-    text-align: center;
-    margin-top: 1rem;
-  }
-
-  .success-msg { display: none; text-align: center; padding: 2rem; }
-  .success-msg .check {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    color: var(--gold);
     margin-bottom: 1rem;
   }
-  .success-msg p {
-    font-size: 0.7rem;
-    color: var(--muted);
-    line-height: 1.8;
-    letter-spacing: 0.05em;
+  .booking-cta-btn:hover { background: var(--gold-bright); }
+  .booking-cta-note {
+    font-size: 0.6rem;
+    color: var(--faint);
+    letter-spacing: 0.06em;
   }
-
   footer {
     border-top: 1px solid var(--border);
     padding: 3rem;
@@ -570,7 +484,6 @@
     align-items: center;
     gap: 2rem;
   }
-
   .footer-logo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1rem;
@@ -580,14 +493,12 @@
     margin-bottom: 0.5rem;
   }
   .footer-logo span { color: var(--gold); }
-
   .footer-sub {
     font-size: 0.6rem;
     letter-spacing: 0.15em;
     color: var(--faint);
     text-transform: uppercase;
   }
-
   .footer-right {
     font-size: 0.6rem;
     letter-spacing: 0.1em;
@@ -596,14 +507,12 @@
     line-height: 2;
   }
   .footer-right a { color: var(--gold); text-decoration: none; }
-
   .fade-up {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
-
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
@@ -614,7 +523,6 @@
     .services-grid { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .booking-wrap { grid-template-columns: 1fr; gap: 3rem; }
-    .form-row { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; }
     .footer-right { text-align: left; }
   }
@@ -632,7 +540,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#booking">Book</a></li>
   </ul>
-  <a href="#booking" class="nav-cta">Book a consultation</a>
+  <a href="https://buy.stripe.com/test_7sY3cw2j74DabGY1Ii2ZO01" target="_blank" class="nav-cta">Book a consultation</a>
 </nav>
 
 <section class="hero" id="home">
@@ -642,7 +550,7 @@
   <h1 class="hero-title">Securing what<br>matters. <em>Building</em><br>what's next.</h1>
   <p class="hero-sub">C.D. Davis & Associates delivers enterprise-grade cybersecurity intelligence, digital forensics, and emerging technology consulting to organizations that can't afford to be wrong.</p>
   <div class="hero-actions">
-    <a href="#booking" class="btn-primary">Book at $99 / hr</a>
+    <a href="https://buy.stripe.com/test_7sY3cw2j74DabGY1Ii2ZO01" target="_blank" class="btn-primary">Book at $99 / hr</a>
     <a href="#services" class="btn-ghost">Explore services</a>
   </div>
   <div class="hero-stats">
@@ -749,52 +657,14 @@
         <li>Pacific Northwest and national clients welcome</li>
         <li>Flexible hourly, retainer, and project arrangements</li>
       </ul>
-      <p style="font-size:0.68rem; color:var(--muted); line-height:1.8; letter-spacing:0.04em;">Submit the consultation request and you'll receive a confirmation within 24 hours. Initial calls are scheduled for 30 minutes at no cost — so we can both determine if there's a fit before any commitment is made.</p>
+      <p style="font-size:0.68rem; color:var(--muted); line-height:1.8; letter-spacing:0.04em;">Pay securely online and book your time instantly. No waiting, no back-and-forth. Your consultation is confirmed the moment payment is complete.</p>
     </div>
     <div class="fade-up" style="transition-delay:0.15s">
-      <div class="booking-form" id="bookingForm">
-        <div class="form-title">Request a Consultation</div>
-        <div class="form-row">
-          <div class="form-field">
-            <label>First name</label>
-            <input type="text" id="fname" placeholder="First">
-          </div>
-          <div class="form-field">
-            <label>Last name</label>
-            <input type="text" id="lname" placeholder="Last">
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Email address</label>
-          <input type="email" id="email" placeholder="you@company.com">
-        </div>
-        <div class="form-field">
-          <label>Organization</label>
-          <input type="text" id="org" placeholder="Company or individual">
-        </div>
-        <div class="form-field">
-          <label>Service area</label>
-          <select id="service">
-            <option value="" disabled selected>Select a focus area</option>
-            <option>Cybersecurity Advisory</option>
-            <option>Digital Forensics</option>
-            <option>AI & Emerging Technology</option>
-            <option>Network Engineering</option>
-            <option>Fraud Detection</option>
-            <option>Strategic Technology Consulting</option>
-            <option>Not sure — general inquiry</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Brief description</label>
-          <textarea id="desc" placeholder="Describe your situation or what you're trying to solve..."></textarea>
-        </div>
-        <button class="form-submit" onclick="submitForm()">Request Consultation — $99 / hr</button>
-        <div class="form-note">You will not be charged until an engagement is confirmed.</div>
-      </div>
-      <div class="success-msg" id="successMsg">
-        <div class="check">✦</div>
-        <p>Your consultation request has been received.<br><br>Calvin D. Davis will follow up within 24 hours to confirm availability and schedule your initial 30-minute call.<br><br><span style="color:var(--gold);">C.D. Davis & Associates</span></p>
+      <div class="booking-cta-box">
+        <div class="booking-cta-title">Book Your Consultation</div>
+        <div class="booking-cta-sub">Pay $99 securely via Stripe. You'll be redirected to choose your time slot immediately after payment. Your session is confirmed instantly.</div>
+        <a href="https://buy.stripe.com/test_7sY3cw2j74DabGY1Ii2ZO01" target="_blank" class="booking-cta-btn">Pay $99 & Book Now</a>
+        <div class="booking-cta-note">Secured by Stripe · Calendar powered by Calendly · No refunds after session begins</div>
       </div>
     </div>
   </div>
@@ -816,13 +686,11 @@
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
-
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = (mx - 4) + 'px';
     cursor.style.top = (my - 4) + 'px';
   });
-
   function animateRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
@@ -831,7 +699,6 @@
     requestAnimationFrame(animateRing);
   }
   animateRing();
-
   document.querySelectorAll('a, button, .service-card').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.style.transform = 'scale(2.5)';
@@ -846,7 +713,6 @@
       ring.style.borderColor = 'rgba(201,168,76,0.4)';
     });
   });
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -855,33 +721,7 @@
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  function submitForm() {
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const service = document.getElementById('service').value;
-
-    if (!fname || !email || !service) {
-      alert('Please fill in your name, email, and service area.');
-      return;
-    }
-
-    const subject = encodeURIComponent('Consultation Request — C.D. Davis & Associates');
-    const body = encodeURIComponent(
-      'Name: ' + document.getElementById('fname').value + ' ' + document.getElementById('lname').value + '\n' +
-      'Email: ' + email + '\n' +
-      'Organization: ' + document.getElementById('org').value + '\n' +
-      'Service: ' + service + '\n\n' +
-      'Description:\n' + document.getElementById('desc').value
-    );
-
-    window.location.href = 'mailto:magmacartowner@outlook.com?subject=' + subject + '&body=' + body;
-
-    document.getElementById('bookingForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-  }
 </script>
 </body>
 </html>
